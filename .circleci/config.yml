@@ -1,27 +1,26 @@
 version: 2.1
+
 jobs:
-  build:
-    docker:
-      - image: circleci/node:10-browsers
+  build_deploy:
+    machine:
+      image: ubuntu-2004:202010-01
     steps:
       - checkout
-      - npm/build-with-cache:
-          steps:
-          - run:
-              name: Install Angular CLI
-              working_directory: service-deployer-frontend
-              command: |
-                npm install @angular/cli
-          - run:
-              name: The First Step
-              command: |
-                ng build --prod
-        - run:
-            name: Code Has Arrived
-            command: |
-              ls -al
-              echo '^^^That should look familiar^^^'
-        - run:
-            name: Running in a Unique Container
-            command: |
-              node -v
+      - run:
+          name: Installing AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt install python3-pip
+            sudo pip3 install awsebcli --upgrade
+      - run:
+          name: Install Angular CLI
+          command: |
+            npm install @angular/cli
+      - run: cd ./travelapp-admin && npm install && npm run build
+      - run: aws s3 sync dist/ s3://admin-travel-app
+
+workflows:
+  version: 2
+  execute_bulk:
+    jobs:
+      - build_deploy
