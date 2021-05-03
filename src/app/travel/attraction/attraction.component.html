@@ -1,0 +1,91 @@
+<div class="header bg-gradient-custom pb-8 pt-5"></div>
+<div class="container-fluid mt--7">
+  <div class="row mt-5">
+    <div class="col-xl-4">
+      <div class=" card">
+        <div class=" card-header"><h3 class=" mb-0">Create Attractions</h3></div>
+        <div class=" card-body">
+          <form novalidate="" class="ng-untouched ng-pristine ng-valid" _lpchecked="1">
+            <div class=" row">
+              <div class=" col-md-6">
+                <div class="form-group">
+                  <div class=" input-group input-group-merge">
+                    <div class=" input-group-prepend"><span class=" input-group-text"><i
+                      class=" fas fa-user"></i></span></div>
+                    <input class=" form-control" placeholder="Attractions name" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class="form-group">
+                  <div class=" input-group input-group-merge">
+                    <div class=" input-group-prepend"><span class=" input-group-text"><i
+                      class=" fas fa-tags"></i></span></div>
+                    <input class="form-control" placeholder="Tags" type="email"></div>
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-12">
+                <div class="form-group">
+                  <div class="input-group input-group-merge">
+                    <input class=" form-control" style="height: 100px" placeholder="Description" type="text">
+                    <div class="input-group-append"><span class=" input-group-text"><i
+                      class=" fas fa-prescription-bottle"></i></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col text-right">
+              <button class="btn btn-sm btn-danger" type="button">Cancel</button>
+              <button class="btn btn-sm btn-success" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">All Attractions</h3>
+            </div>
+            <div class="col text-right">
+              <a href="#!" class="btn btn-sm btn-success">See all</a>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">Attractions name</th>
+              <th scope="col">Tag</th>
+              <th scope="col">Description</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let attraction of attractions">
+              <th scope="row">{{attraction.name}}</th>
+              <td>#{{attraction.hashTag}}</td>
+              <td>{{attraction.description}}</td>
+              <td>
+                <span class="btn btn-sm"
+                      [ngClass]="attraction.status === 'ACTIVE'? 'btn-success': attraction.status === 'INACTIVE'? 'btn-warning': 'btn-danger' ">{{attraction.status}}</span>
+              </td>
+              <td>
+                <i class="fas fa-edit text-warning mr-3"></i>
+                <i class="fas fa-trash text-danger mr-3"></i>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
