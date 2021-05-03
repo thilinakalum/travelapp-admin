@@ -16,8 +16,9 @@ jobs:
           name: Install Angular CLI
           command: |
             npm install @angular/cli
-      - run: npm install && npm run build
-      - run: aws s3 sync dist/ s3://admin-travel-app
+      - run: npm install && ng build --prod
+      - run: aws s3 sync dist/ s3://admin-travel-app \
+          --exclude 'dist/assets/*'
 
 workflows:
   version: 2
