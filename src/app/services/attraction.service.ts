@@ -14,6 +14,7 @@ import {AttractionModel} from '../model/attraction.model';
 export class AttractionService {
 
   SERVICE_PATH = 'http://13.92.168.193:9003/';
+  // SERVICE_PATH = 'http://localhost:9003/';
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,14 @@ export class AttractionService {
       .pipe(map((response) => response as AttractionModel[]), catchError(this.handleError));
   }
 
+  saveAttraction(attraction: AttractionModel): Observable<AttractionModel> {
+    console.log(attraction);
+    return this.http
+      .post(this.SERVICE_PATH + 'attractions', attraction, {
+        headers: null,
+      })
+      .pipe(map((response) => response as AttractionModel), catchError(this.handleError));
+  }
 
   handleError(err) {
     if (err instanceof HttpErrorResponse) {
