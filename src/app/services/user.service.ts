@@ -12,7 +12,7 @@ import {Page} from '../model/page';
 })
 export class UserService {
 
-  SERVICE_PATH = 'http://localhost:9007/';
+  SERVICE_PATH = 'http://13.92.168.193:9007/';
 
   constructor(private http: HttpClient) {
   }
