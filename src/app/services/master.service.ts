@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {map, catchError} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {CityModel} from '../model/city.model';
 import {CountryModel} from '../model/country.model';
 import {StateModel} from '../model/state.model';
@@ -14,7 +14,8 @@ export class MasterService {
 
   SERVICE_PATH = 'http://13.92.168.193:9000/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllCities(): Observable<CityModel[]> {
     return this.http

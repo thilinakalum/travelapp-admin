@@ -5,15 +5,15 @@
       <div class=" card">
         <div class=" card-header"><h3 class=" mb-0">Create Country</h3></div>
         <div class=" card-body">
-          <form novalidate="" (ngSubmit)="saveCountry()" class="ng-untouched ng-pristine ng-valid" _lpchecked="1">
+          <form (ngSubmit)="saveCountry()" _lpchecked="1" class="ng-untouched ng-pristine ng-valid" novalidate="">
             <div class=" row">
               <div class=" col-md-6">
                 <div class="form-group">
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-user"></i></span></div>
-                    <input class=" form-control" placeholder="Country name" type="text" name="name"
-                           [(ngModel)]="country.name">
+                    <input [(ngModel)]="country.name" class=" form-control" name="name" placeholder="Country name"
+                           type="text">
                   </div>
                 </div>
               </div>
@@ -22,8 +22,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-tags"></i></span></div>
-                    <input class="form-control" placeholder="Tags" type="text" name="hashTag"
-                           [(ngModel)]="country.hashTag"></div>
+                    <input [(ngModel)]="country.hashTag" class="form-control" name="hashTag" placeholder="Tags"
+                           type="text"></div>
                 </div>
               </div>
             </div>
@@ -31,8 +31,8 @@
               <div class=" col-md-12">
                 <div class="form-group">
                   <div class="input-group input-group-merge">
-                    <input class=" form-control" style="height: 100px" placeholder="Description" type="text"
-                           name="description" [(ngModel)]="country.description">
+                    <input [(ngModel)]="country.description" class=" form-control" name="description" placeholder="Description"
+                           style="height: 100px" type="text">
                     <div class="input-group-append"><span class=" input-group-text"><i
                       class=" fas fa-prescription-bottle"></i></span></div>
                   </div>
@@ -40,7 +40,7 @@
               </div>
             </div>
             <div class="col text-right">
-              <button class="btn btn-sm btn-danger" type="button" (click)="cancel()">Cancel</button>
+              <button (click)="cancel()" class="btn btn-sm btn-danger" type="button">Cancel</button>
               <button class="btn btn-sm btn-success" type="submit">Save</button>
             </div>
           </form>
@@ -55,7 +55,7 @@
               <h3 class="mb-0">All Countries</h3>
             </div>
             <div class="col text-right">
-              <a href="#!" class="btn btn-sm btn-success">See all</a>
+              <a class="btn btn-sm btn-success" href="#!">See all</a>
             </div>
           </div>
         </div>
@@ -76,12 +76,12 @@
               <td>#{{country.hashTag}}</td>
               <td>{{country.description}}</td>
               <td>
-                <span class="btn btn-sm"
-                      [ngClass]="country.status === 'ACTIVE'? 'btn-success': country.status === 'INACTIVE'? 'btn-warning': 'btn-danger' ">{{country.status}}</span>
+                <span [ngClass]="country.status === 'ACTIVE'? 'btn-success': country.status === 'INACTIVE'? 'btn-warning': 'btn-danger' "
+                      class="btn btn-sm">{{country.status}}</span>
               </td>
               <td>
-                <i class="btn btn-sm fas fa-edit text-warning mr-3" (click)="edit(country)"></i>
-                <i class="btn btn-sm fas fa-trash text-danger mr-3" (click)="delete(country)"></i>
+                <i (click)="edit(country)" class="btn btn-sm fas fa-edit text-warning mr-3"></i>
+                <i (click)="delete(country)" class="btn btn-sm fas fa-trash text-danger mr-3"></i>
               </td>
             </tr>
             </tbody>

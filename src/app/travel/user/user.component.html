@@ -1,11 +1,11 @@
 <div class="header bg-gradient-custom pb-8 pt-5"></div>
 <div class="container-fluid mt--7">
   <div class="row mt-5">
-    <div [ngClass]="viewCreate === true ? 'col-xl-4': 'col-xl-0'" *ngIf="viewCreate">
+    <div *ngIf="viewCreate" [ngClass]="viewCreate === true ? 'col-xl-4': 'col-xl-0'">
       <div class=" card">
         <div class=" card-header"><h3 class=" mb-0">Create User</h3></div>
         <div class=" card-body">
-          <form novalidate="" (ngSubmit)="save()" class="ng-untouched ng-pristine ng-valid">
+          <form (ngSubmit)="save()" class="ng-untouched ng-pristine ng-valid" novalidate="">
             <div class=" row">
               <div class=" col-md-12">
                 <app-image-upload></app-image-upload>
@@ -17,8 +17,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-user"></i></span></div>
-                    <input class=" form-control" placeholder="User name" type="text" name="username"
-                           [(ngModel)]="user.username">
+                    <input [(ngModel)]="user.username" class=" form-control" name="username" placeholder="User name"
+                           type="text">
                   </div>
                 </div>
               </div>
@@ -27,7 +27,7 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-tags"></i></span></div>
-                    <input class="form-control" placeholder="Email" type="text" name="email" [(ngModel)]="user.email">
+                    <input [(ngModel)]="user.email" class="form-control" name="email" placeholder="Email" type="text">
                   </div>
                 </div>
               </div>
@@ -38,8 +38,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-tags"></i></span></div>
-                    <input class="form-control" placeholder="Password" type="text" name="password"
-                           [(ngModel)]="user.password"></div>
+                    <input [(ngModel)]="user.password" class="form-control" name="password" placeholder="Password"
+                           type="text"></div>
                 </div>
               </div>
               <div class=" col-md-6">
@@ -47,19 +47,19 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-tags"></i></span></div>
-                    <input class="form-control" placeholder="Re-enter password" type="text" name="password"
-                           [(ngModel)]="user.password"></div>
+                    <input [(ngModel)]="user.password" class="form-control" name="password" placeholder="Re-enter password"
+                           type="text"></div>
                 </div>
               </div>
-<!--              <div class=" col-md-6">-->
-<!--                  <select class="form-control custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user.roles">-->
-<!--                    <option selected>Select Role</option>-->
-<!--                    <option *ngFor="let role of roles" [ngValue]="role.id">{{role.name}}</option>-->
-<!--                  </select>-->
-<!--              </div>-->
+              <!--              <div class=" col-md-6">-->
+              <!--                  <select class="form-control custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user.roles">-->
+              <!--                    <option selected>Select Role</option>-->
+              <!--                    <option *ngFor="let role of roles" [ngValue]="role.id">{{role.name}}</option>-->
+              <!--                  </select>-->
+              <!--              </div>-->
             </div>
             <div class="col text-right">
-              <button class="btn btn-sm btn-danger" type="button" (click)="cancel()">Cancel</button>
+              <button (click)="cancel()" class="btn btn-sm btn-danger" type="button">Cancel</button>
               <button *ngIf="isNew" class="btn btn-sm btn-success" type="submit">Save</button>
               <button *ngIf="!isNew" class="btn btn-sm btn-warning" type="submit">Update</button>
             </div>
@@ -75,8 +75,8 @@
               <h3 class="mb-0">All Users</h3>
             </div>
             <div class="col text-right">
-              <button class="btn btn-sm btn-default" type="button" (click)="createViewer()">Create</button>
-              <a href="#!" class="btn btn-sm btn-success">See all</a>
+              <button (click)="createViewer()" class="btn btn-sm btn-default" type="button">Create</button>
+              <a class="btn btn-sm btn-success" href="#!">See all</a>
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@
               <td>{{user.accountNonLocked}}</td>
               <td>{{user.credentialsNonExpired}}</td>
               <td>
-                <i class="fas fa-edit text-warning mr-3" (click)="edit(user)"></i>
+                <i (click)="edit(user)" class="fas fa-edit text-warning mr-3"></i>
                 <i class="fas fa-trash text-danger mr-3"></i>
               </td>
             </tr>
@@ -112,16 +112,16 @@
           <div class="card-footer py-3">
             <ul class="pagination justify-content-end mb-0">
               <li class="page-item disabled">
-                <a class="page-link" (click)="previousClick()" tabindex="-1">
+                <a (click)="previousClick()" class="page-link" tabindex="-1">
                   <i class="fas fa-angle-left"></i>
                   <span class="sr-only">Previous</span>
                 </a>
               </li>
-              <li *ngFor='let index of pageIndexes' class="page-item " [ngClass]="active(index)">
-                <a class="page-link" (click)="getPaginationWithIndex(index)">{{index + 1}}</a>
+              <li *ngFor='let index of pageIndexes' [ngClass]="active(index)" class="page-item ">
+                <a (click)="getPaginationWithIndex(index)" class="page-link">{{index + 1}}</a>
               </li>
               <li class="page-item">
-                <a class="page-link" (click)="nextClick()">
+                <a (click)="nextClick()" class="page-link">
                   <i class="fas fa-angle-right"></i>
                   <span class="sr-only">Next</span>
                 </a>

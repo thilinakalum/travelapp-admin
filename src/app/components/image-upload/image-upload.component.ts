@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {

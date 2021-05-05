@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-icons',
@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class IconsComponent implements OnInit {
 
   public copy: string;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

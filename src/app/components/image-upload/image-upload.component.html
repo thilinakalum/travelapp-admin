@@ -1,13 +1,13 @@
 <div>
   <div *ngIf="selectedImage" class=" row justify-content-center image-preview-container">
-    <div class="image-preview"
-         [ngStyle]="{'backgroundImage': 'url('+ selectedImage.src+ ')' }">
+    <div [ngStyle]="{'backgroundImage': 'url('+ selectedImage.src+ ')' }"
+         class="image-preview">
     </div>
   </div>
 
   <div *ngIf="!selectedImage" class="row justify-content-center image-preview-container">
-    <div class="image-preview"
-         [ngStyle]="{'backgroundImage': 'url('+ '../../../assets/img/theme/empty_propic.png' +')' }">
+    <div [ngStyle]="{'backgroundImage': 'url('+ '../../../assets/img/theme/empty_propic.png' +')' }"
+         class="image-preview">
     </div>
   </div>
 
@@ -16,9 +16,9 @@
       <span>Select Image</span>
       <input
         #imageInput
-        type="file"
+        (change)="processImage(imageInput)"
         accept="image/*"
-        (change)="processImage(imageInput)">
+        type="file">
     </label>
   </div>
 </div>

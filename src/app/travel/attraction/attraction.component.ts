@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AttractionService} from '../../services/attraction.service';
 import {AttractionModel} from '../../model/attraction.model';
 import {CountryModel} from '../../model/country.model';
@@ -16,7 +16,8 @@ export class AttractionComponent implements OnInit {
   attraction = new AttractionModel();
   coordinates = new CoordinatesModel();
 
-  constructor(private attractionService: AttractionService) { }
+  constructor(private attractionService: AttractionService) {
+  }
 
   ngOnInit(): void {
     this.findAllAttractions();

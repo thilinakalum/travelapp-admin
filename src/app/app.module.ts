@@ -33,4 +33,5 @@ import {BrowserModule} from '@angular/platform-browser';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

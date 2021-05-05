@@ -5,25 +5,25 @@
       <div class=" card">
         <div class=" card-header"><h3 class=" mb-0">Create Attractions</h3></div>
         <div class=" card-body">
-          <form novalidate="" (ngSubmit)="saveAttractions()" class="ng-untouched ng-pristine ng-valid" _lpchecked="1">
+          <form (ngSubmit)="saveAttractions()" _lpchecked="1" class="ng-untouched ng-pristine ng-valid" novalidate="">
             <div class=" row">
               <div class=" col-md-6">
                 <div class="form-group">
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-user"></i></span></div>
-                    <input class=" form-control" placeholder="Attractions name" type="text" name="attractionName"
-                           [(ngModel)]="attraction.name">
-                  </div>
+                    <input [(ngModel)]="attraction.name" class=" form-control" name="attractionName" placeholder="Attractions name"
+                           type="text">
                   </div>
                 </div>
+              </div>
               <div class=" col-md-6">
                 <div class="form-group">
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-images"></i></span></div>
-                    <input class=" form-control" placeholder="Cover Image" type="text" name="coverImage"
-                           [(ngModel)]="attraction.coverImage">
+                    <input [(ngModel)]="attraction.coverImage" class=" form-control" name="coverImage" placeholder="Cover Image"
+                           type="text">
                   </div>
                 </div>
               </div>
@@ -34,8 +34,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-tag"></i></span></div>
-                    <input class=" form-control" placeholder="Hashtag" type="text" name="hashTag"
-                           [(ngModel)]="attraction.hashTag">
+                    <input [(ngModel)]="attraction.hashTag" class=" form-control" name="hashTag" placeholder="Hashtag"
+                           type="text">
                   </div>
                 </div>
               </div>
@@ -44,8 +44,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-tags"></i></span></div>
-                    <input class="form-control" placeholder="Tags" type="text" name="tags"
-                           [(ngModel)]="attraction.tags"></div>
+                    <input [(ngModel)]="attraction.tags" class="form-control" name="tags" placeholder="Tags"
+                           type="text"></div>
                 </div>
               </div>
             </div>
@@ -55,8 +55,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-tags"></i></span></div>
-                    <input class="form-control" placeholder="Interest Tags" type="text" name="interestTags"
-                           [(ngModel)]="attraction.interestTags"></div>
+                    <input [(ngModel)]="attraction.interestTags" class="form-control" name="interestTags" placeholder="Interest Tags"
+                           type="text"></div>
                 </div>
               </div>
               <div class=" col-md-6">
@@ -64,8 +64,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class="fas fa-highlighter"></i></span></div>
-                    <input class=" form-control" placeholder="Information Level" type="number" name="informationLevel"
-                           [(ngModel)]="attraction.informationLevel">
+                    <input [(ngModel)]="attraction.informationLevel" class=" form-control" name="informationLevel" placeholder="Information Level"
+                           type="number">
                   </div>
                 </div>
               </div>
@@ -76,8 +76,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class="fas fa-map-marker-alt"></i></span></div>
-                    <input class=" form-control" placeholder="Longitude" type="number" name="longitude"
-                           [(ngModel)]="coordinates.longitude">
+                    <input [(ngModel)]="coordinates.longitude" class=" form-control" name="longitude" placeholder="Longitude"
+                           type="number">
                   </div>
                 </div>
               </div>
@@ -86,8 +86,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class="fas fa-map-marker"></i></span></div>
-                    <input class="form-control" placeholder="Latitude" type="number" name="latitude"
-                           [(ngModel)]="coordinates.latitude">
+                    <input [(ngModel)]="coordinates.latitude" class="form-control" name="latitude" placeholder="Latitude"
+                           type="number">
                   </div>
                 </div>
               </div>
@@ -96,9 +96,9 @@
               <div class=" col-md-12">
                 <div class="form-group">
                   <div class="input-group input-group-merge">
-                    <textarea class=" form-control" style="height: 100px" placeholder="Overview" type="text"
-                           name="overview"
-                           [(ngModel)]="attraction.overview"></textarea>
+                    <textarea [(ngModel)]="attraction.overview" class=" form-control" name="overview" placeholder="Overview"
+                              style="height: 100px"
+                              type="text"></textarea>
                     <div class="input-group-append"><span class=" input-group-text"><i
                       class=" fas fa-prescription-bottle"></i></span></div>
                   </div>
@@ -109,9 +109,9 @@
               <div class=" col-md-12">
                 <div class="form-group">
                   <div class="input-group input-group-merge">
-                    <textarea class=" form-control" style="height: 100px" placeholder="Description" type="area"
-                           name="description"
-                           [(ngModel)]="attraction.description"></textarea>
+                    <textarea [(ngModel)]="attraction.description" class=" form-control" name="description" placeholder="Description"
+                              style="height: 100px"
+                              type="area"></textarea>
                     <div class="input-group-append"><span class=" input-group-text"><i
                       class=" fas fa-prescription-bottle"></i></span></div>
                   </div>
@@ -119,8 +119,8 @@
               </div>
             </div>
             <div class="col text-right">
-              <button class="btn btn-sm btn-danger" type="button" (click)="cancel()">Cancel</button>
-              <button *ngIf="isNew"class="btn btn-sm btn-success" type="submit">Save</button>
+              <button (click)="cancel()" class="btn btn-sm btn-danger" type="button">Cancel</button>
+              <button *ngIf="isNew" class="btn btn-sm btn-success" type="submit">Save</button>
               <button *ngIf="!isNew" class="btn btn-sm btn-warning" type="submit">Update</button>
             </div>
           </form>
@@ -135,7 +135,7 @@
               <h3 class="mb-0">All Attractions</h3>
             </div>
             <div class="col text-right">
-              <a href="#!" class="btn btn-sm btn-success">See all</a>
+              <a class="btn btn-sm btn-success" href="#!">See all</a>
             </div>
           </div>
         </div>
@@ -154,16 +154,17 @@
             <tbody>
             <tr *ngFor="let attraction of attractions">
               <th>
-                <img alt="Image placeholder" style="border-radius: 10% !important; width: 55px;height: 45px;" [src]="attraction.coverImage">
+                <img [src]="attraction.coverImage" alt="Image placeholder"
+                     style="border-radius: 10% !important; width: 55px;height: 45px;">
               </th>
               <th scope="row">{{attraction.name}}</th>
               <td>{{attraction.informationLevel}}</td>
               <td>
-                <span class="btn btn-sm"
-                      [ngClass]="attraction.status === 'ACTIVE'? 'btn-success': attraction.status === 'INACTIVE'? 'btn-warning': 'btn-danger' ">{{attraction.status}}</span>
+                <span [ngClass]="attraction.status === 'ACTIVE'? 'btn-success': attraction.status === 'INACTIVE'? 'btn-warning': 'btn-danger' "
+                      class="btn btn-sm">{{attraction.status}}</span>
               </td>
               <td>
-                <i class="fas fa-edit text-warning mr-3" (click)="edit(attraction)"></i>
+                <i (click)="edit(attraction)" class="fas fa-edit text-warning mr-3"></i>
                 <i class="fas fa-trash text-danger mr-3"></i>
               </td>
             </tr>

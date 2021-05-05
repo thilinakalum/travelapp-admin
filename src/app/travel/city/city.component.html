@@ -7,14 +7,14 @@
       <div class=" card">
         <div class=" card-header"><h3 class=" mb-0">Create City</h3></div>
         <div class=" card-body">
-          <form novalidate="" (ngSubmit)="saveCity()" class="ng-untouched ng-pristine ng-valid" _lpchecked="1">
+          <form (ngSubmit)="saveCity()" _lpchecked="1" class="ng-untouched ng-pristine ng-valid" novalidate="">
             <div class=" row">
               <div class=" col-md-6">
                 <div class="form-group">
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-user"></i></span></div>
-                    <input class="form-control" placeholder="City name" type="text" name="name" [(ngModel)]="city.name">
+                    <input [(ngModel)]="city.name" class="form-control" name="name" placeholder="City name" type="text">
                   </div>
                 </div>
               </div>
@@ -23,8 +23,8 @@
                   <div class=" input-group input-group-merge">
                     <div class=" input-group-prepend"><span class=" input-group-text"><i
                       class=" fas fa-tags"></i></span></div>
-                    <input class="form-control" placeholder="Tags" type="text" name="hashTag"
-                           [(ngModel)]="city.hashTag"></div>
+                    <input [(ngModel)]="city.hashTag" class="form-control" name="hashTag" placeholder="Tags"
+                           type="text"></div>
                 </div>
               </div>
             </div>
@@ -32,8 +32,8 @@
               <div class=" col-md-12">
                 <div class="form-group">
                   <div class="input-group input-group-merge">
-                    <input class=" form-control" style="height: 100px" placeholder="Description" type="text"
-                           name="description" [(ngModel)]="city.description">
+                    <input [(ngModel)]="city.description" class=" form-control" name="description" placeholder="Description"
+                           style="height: 100px" type="text">
                     <div class="input-group-append"><span class=" input-group-text"><i
                       class=" fas fa-prescription-bottle"></i></span></div>
                   </div>
@@ -41,7 +41,7 @@
               </div>
             </div>
             <div class="col text-right">
-              <button class="btn btn-sm btn-danger" type="button" (click)="cancel()">Cancel</button>
+              <button (click)="cancel()" class="btn btn-sm btn-danger" type="button">Cancel</button>
               <button class="btn btn-sm btn-success" type="submit">Save</button>
             </div>
           </form>
@@ -56,7 +56,7 @@
               <h3 class="mb-0">All Cities</h3>
             </div>
             <div class="col text-right">
-              <a href="#!" class="btn btn-sm btn-success">See all</a>
+              <a class="btn btn-sm btn-success" href="#!">See all</a>
             </div>
           </div>
         </div>
@@ -78,8 +78,8 @@
               <td>#{{city.hashTag}}</td>
               <td>{{city.description}}</td>
               <td>
-                <span class="btn btn-sm"
-                      [ngClass]="city.status === 'ACTIVE'? 'btn-success': city.status === 'INACTIVE'? 'btn-warning': 'btn-danger' ">{{city.status}}</span>
+                <span [ngClass]="city.status === 'ACTIVE'? 'btn-success': city.status === 'INACTIVE'? 'btn-warning': 'btn-danger' "
+                      class="btn btn-sm">{{city.status}}</span>
               </td>
               <td>
                 <i class="fas fa-edit text-warning mr-3"></i>

@@ -4,13 +4,14 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
           <h1 class="text-white">Welcome!</h1>
-          <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+          <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for
+            free.</p>
         </div>
       </div>
     </div>
   </div>
   <div class="separator separator-bottom separator-skew zindex-100">
-    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
       <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
     </svg>
   </div>
@@ -23,11 +24,11 @@
         <div class="card-header bg-transparent pb-5">
           <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
           <div class="btn-wrapper text-center">
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+            <a class="btn btn-neutral btn-icon" href="javascript:void(0)">
               <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
               <span class="btn-inner--text">Github</span>
             </a>
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+            <a class="btn btn-neutral btn-icon" href="javascript:void(0)">
               <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
               <span class="btn-inner--text">Google</span>
             </a>
@@ -61,17 +62,17 @@
               </label>
             </div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary my-4" [routerLink]="['/country']">Sign in</button>
+              <button [routerLink]="['/country']" class="btn btn-primary my-4" type="button">Sign in</button>
             </div>
           </form>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-6">
-          <a href="javascript:void(0)" class="text-light"><small>Forgot password?</small></a>
+          <a class="text-light" href="javascript:void(0)"><small>Forgot password?</small></a>
         </div>
         <div class="col-6 text-right">
-          <a href="javascript:void(0)" class="text-light" [routerLink]="['/register']"><small>Create new account</small></a>
+          <a [routerLink]="['/register']" class="text-light" href="javascript:void(0)"><small>Create new account</small></a>
         </div>
       </div>
     </div>

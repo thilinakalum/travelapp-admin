@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {map, catchError} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {MainBoundingBoxModel} from '../model/mainBoundingBox.model';
 
 @Injectable({
@@ -11,7 +11,8 @@ export class MapService {
 
   SERVICE_PATH = 'http://13.92.168.193:9001/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllBoundingBox(): Observable<MainBoundingBoxModel[]> {
     return this.http

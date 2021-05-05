@@ -1,11 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {map, catchError} from 'rxjs/operators';
-import {CityModel} from '../model/city.model';
-import {CountryModel} from '../model/country.model';
-import {StateModel} from '../model/state.model';
-import {InterestModel} from '../model/interest.model';
+import {catchError, map} from 'rxjs/operators';
 import {AttractionModel} from '../model/attraction.model';
 
 @Injectable({
@@ -14,9 +10,11 @@ import {AttractionModel} from '../model/attraction.model';
 export class AttractionService {
 
   SERVICE_PATH = 'http://13.92.168.193:9003/';
+
   // SERVICE_PATH = 'http://localhost:9003/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllAttractions(): Observable<AttractionModel[]> {
     return this.http
