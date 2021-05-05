@@ -1,1 +1,135 @@
-<p>user works!</p>
+<div class="header bg-gradient-custom pb-8 pt-5"></div>
+<div class="container-fluid mt--7">
+  <div class="row mt-5">
+    <div [ngClass]="viewCreate === true ? 'col-xl-4': 'col-xl-0'" *ngIf="viewCreate">
+      <div class=" card">
+        <div class=" card-header"><h3 class=" mb-0">Create User</h3></div>
+        <div class=" card-body">
+          <form novalidate="" (ngSubmit)="save()" class="ng-untouched ng-pristine ng-valid">
+            <div class=" row">
+              <div class=" col-md-12">
+                <app-image-upload></app-image-upload>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-6">
+                <div class="form-group">
+                  <div class=" input-group input-group-merge">
+                    <div class=" input-group-prepend"><span class=" input-group-text"><i
+                      class=" fas fa-user"></i></span></div>
+                    <input class=" form-control" placeholder="User name" type="text" name="username"
+                           [(ngModel)]="user.username">
+                  </div>
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class="form-group">
+                  <div class=" input-group input-group-merge">
+                    <div class=" input-group-prepend"><span class=" input-group-text"><i
+                      class=" fas fa-tags"></i></span></div>
+                    <input class="form-control" placeholder="Email" type="text" name="email" [(ngModel)]="user.email">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class=" row">
+              <div class=" col-md-6">
+                <div class="form-group">
+                  <div class=" input-group input-group-merge">
+                    <div class=" input-group-prepend"><span class=" input-group-text"><i
+                      class=" fas fa-tags"></i></span></div>
+                    <input class="form-control" placeholder="Password" type="text" name="password"
+                           [(ngModel)]="user.password"></div>
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class="form-group">
+                  <div class=" input-group input-group-merge">
+                    <div class=" input-group-prepend"><span class=" input-group-text"><i
+                      class=" fas fa-tags"></i></span></div>
+                    <input class="form-control" placeholder="Re-enter password" type="text" name="password"
+                           [(ngModel)]="user.password"></div>
+                </div>
+              </div>
+<!--              <div class=" col-md-6">-->
+<!--                  <select class="form-control custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user.roles">-->
+<!--                    <option selected>Select Role</option>-->
+<!--                    <option *ngFor="let role of roles" [ngValue]="role.id">{{role.name}}</option>-->
+<!--                  </select>-->
+<!--              </div>-->
+            </div>
+            <div class="col text-right">
+              <button class="btn btn-sm btn-danger" type="button" (click)="cancel()">Cancel</button>
+              <button *ngIf="isNew" class="btn btn-sm btn-success" type="submit">Save</button>
+              <button *ngIf="!isNew" class="btn btn-sm btn-warning" type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div [ngClass]="viewCreate === false ? 'col-xl-12 mb-5 mb-xl-0': 'col-xl-8 mb-5 mb-xl-0'">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">All Users</h3>
+            </div>
+            <div class="col text-right">
+              <button class="btn btn-sm btn-default" type="button" (click)="createViewer()">Create</button>
+              <a href="#!" class="btn btn-sm btn-success">See all</a>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">User name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Enable</th>
+              <th scope="col">Acc Non Expired</th>
+              <th scope="col">Acc Non Locked</th>
+              <th scope="col">Cred Non Expired</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+              <th scope="row">{{user.username}}</th>
+              <td>{{user.email}}</td>
+              <td>{{user.enabled}}</td>
+              <td>{{user.accountNonExpired}}</td>
+              <td>{{user.accountNonLocked}}</td>
+              <td>{{user.credentialsNonExpired}}</td>
+              <td>
+                <i class="fas fa-edit text-warning mr-3" (click)="edit(user)"></i>
+                <i class="fas fa-trash text-danger mr-3"></i>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="card-footer py-3">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" (click)="previousClick()" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li *ngFor='let index of pageIndexes' class="page-item " [ngClass]="active(index)">
+                <a class="page-link" (click)="getPaginationWithIndex(index)">{{index + 1}}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="nextClick()">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,10 +28,9 @@ export const LOCATION_ROUTES: RouteInfo[] = [
 ];
 
 export const USER_ROUTES: RouteInfo[] = [
-  { path: '/user-profile', title: 'Groups',  icon: 'fa-users text-custom', class: '' },
-  { path: '/user-profile', title: 'Users',  icon: 'fa-user text-custom', class: '' },
-  { path: '/user-profile', title: 'Roles',  icon: 'fa-id-badge text-custom', class: '' },
-  { path: '/user-profile', title: 'Policies',  icon: 'fa-user-secret  text-custom', class: '' },
+  { path: '/user', title: 'Users',  icon: 'fa-user text-custom', class: '' },
+  // { path: '/role', title: 'Roles',  icon: 'fa-id-badge text-custom', class: '' },
+  // { path: '/permission', title: 'Permissions',  icon: 'fa-user-secret  text-custom', class: '' },
 ];
 
 @Component({

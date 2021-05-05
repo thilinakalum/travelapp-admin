@@ -1,0 +1,24 @@
+<div>
+  <div *ngIf="selectedImage" class=" row justify-content-center image-preview-container">
+    <div class="image-preview"
+         [ngStyle]="{'backgroundImage': 'url('+ selectedImage.src+ ')' }">
+    </div>
+  </div>
+
+  <div *ngIf="!selectedImage" class="row justify-content-center image-preview-container">
+    <div class="image-preview"
+         [ngStyle]="{'backgroundImage': 'url('+ '../../../assets/img/theme/empty_propic.png' +')' }">
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <label class="btn btn-default btn-sm image-upload-container">
+      <span>Select Image</span>
+      <input
+        #imageInput
+        type="file"
+        accept="image/*"
+        (change)="processImage(imageInput)">
+    </label>
+  </div>
+</div>

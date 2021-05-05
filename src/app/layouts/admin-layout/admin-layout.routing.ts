@@ -12,6 +12,9 @@ import {InterestComponent} from '../../travel/interest/interest.component';
 import {ActivityComponent} from '../../travel/activity/activity.component';
 import {MapComponent} from '../../travel/map/map.component';
 import {AttractionComponent} from '../../travel/attraction/attraction.component';
+import {UserComponent} from '../../travel/user/user.component';
+import {RoleComponent} from '../../travel/role/role.component';
+import {PermissionComponent} from '../../travel/permission/permission.component';
 
 export const AdminLayoutRoutes: Routes = [
     // { path: 'dashboard',      component: DashboardComponent },
@@ -26,4 +29,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'activity',       component: ActivityComponent },
     { path: 'map',            component: MapComponent },
     { path: 'attraction',     component: AttractionComponent },
+    { path: 'user',           component: UserComponent },
+    { path: 'role',           component: RoleComponent },
+    { path: 'permission',     component: PermissionComponent },
 ];

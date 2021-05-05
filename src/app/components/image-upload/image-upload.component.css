@@ -1,0 +1,19 @@
+input {
+  display: none;
+}
+
+.image-upload-container {
+  cursor: pointer;
+}
+
+.image-preview-container {
+  background-color: #ffffff;
+  position: relative;
+}
+
+.image-preview-container .image-preview {
+  background: center center no-repeat;
+  background-size: contain;
+  height: 140px;
+  width: 140px;
+}

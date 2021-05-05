@@ -1,82 +1,77 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {map, catchError} from 'rxjs/operators';
-import {CityModel} from '../model/city.model';
-import {CountryModel} from '../model/country.model';
-import {StateModel} from '../model/state.model';
-import {InterestModel} from '../model/interest.model';
+import {catchError, map} from 'rxjs/operators';
+import {PermissionModel} from '../model/permission.model';
+import {RoleModel} from '../model/role.model';
+import {UserModel} from '../model/user.model';
+import {Page} from '../model/page';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MasterService {
+export class UserService {
 
-  SERVICE_PATH = 'http://13.92.168.193:9007/';
+  SERVICE_PATH = 'http://localhost:9007/';
 
-  constructor(private http: HttpClient) { }
-
-  getAllCities(): Observable<CityModel[]> {
-    return this.http
-      .get(this.SERVICE_PATH + 'cities', {headers: null})
-      .pipe(map((response) => response as CityModel[]), catchError(this.handleError));
+  constructor(private http: HttpClient) {
   }
 
-  saveCity(city: CityModel): Observable<CityModel> {
+  getAllRoles(): Observable<RoleModel[]> {
     return this.http
-      .post(this.SERVICE_PATH + 'cities', city, {
+      .get(this.SERVICE_PATH + 'users/roles', {headers: null})
+      .pipe(map((response) => response as RoleModel[]), catchError(this.handleError));
+  }
+
+  getAllPermissions(): Observable<PermissionModel[]> {
+    return this.http
+      .get(this.SERVICE_PATH + 'users/permission', {headers: null})
+      .pipe(map((response) => response as PermissionModel[]), catchError(this.handleError));
+  }
+
+  saveUser(user: UserModel): Observable<UserModel> {
+    return this.http
+      .post(this.SERVICE_PATH + 'user', user, {
         headers: null,
       })
-      .pipe(map((response) => response as CityModel), catchError(this.handleError));
+      .pipe(map((response) => response as UserModel), catchError(this.handleError));
   }
 
-  getAllCountries(): Observable<CountryModel[]> {
+  saveRole(role: RoleModel): Observable<RoleModel> {
     return this.http
-      .get(this.SERVICE_PATH + 'countries', {headers: null})
-      .pipe(map((response) => response as CountryModel[]), catchError(this.handleError));
-  }
-
-  saveCountry(city: CityModel): Observable<CountryModel> {
-    return this.http
-      .post(this.SERVICE_PATH + 'countries', city, {
+      .post(this.SERVICE_PATH + 'roles', role, {
         headers: null,
       })
-      .pipe(map((response) => response as CountryModel), catchError(this.handleError));
+      .pipe(map((response) => response as RoleModel), catchError(this.handleError));
   }
 
-  getAllStates(): Observable<StateModel[]> {
+  savePermission(permission: PermissionModel): Observable<PermissionModel> {
     return this.http
-      .get(this.SERVICE_PATH + 'states', {headers: null})
-      .pipe(map((response) => response as StateModel[]), catchError(this.handleError));
-  }
-
-  saveState(state: StateModel): Observable<StateModel> {
-    return this.http
-      .post(this.SERVICE_PATH + 'states', state, {
+      .post(this.SERVICE_PATH + 'permission', permission, {
         headers: null,
       })
-      .pipe(map((response) => response as StateModel), catchError(this.handleError));
+      .pipe(map((response) => response as PermissionModel), catchError(this.handleError));
   }
 
-  getAllInterests(): Observable<InterestModel[]> {
-    return this.http
-      .get(this.SERVICE_PATH + 'interests', {headers: null})
-      .pipe(map((response) => response as InterestModel[]), catchError(this.handleError));
+  getPagableCustomers(pageNumber: number, pageSize: number): Observable<Page<UserModel>> {
+    let params = new HttpParams();
+    params = params.append('page', pageNumber.toString());
+    params = params.append('size', pageSize.toString());
+    return this.http.get<Page<UserModel>>(this.SERVICE_PATH + 'users', {params: params})
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  saveInterest(interestModel: InterestModel): Observable<InterestModel> {
-    return this.http
-      .post(this.SERVICE_PATH + 'interests', interestModel, {
-        headers: null,
-      })
-      .pipe(map((response) => response as InterestModel), catchError(this.handleError));
-  }
-
-  handleError(err) {
-    if (err instanceof HttpErrorResponse) {
-      return throwError(err.message);
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
     } else {
-      return throwError(err);
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
     }
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 }

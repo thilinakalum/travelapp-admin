@@ -13,10 +13,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppRoutingModule} from './app.routing';
 import {ComponentsModule} from './components/components.module';
 import {BrowserModule} from '@angular/platform-browser';
-import { UserComponent } from './travel/user/user.component';
-import { PolicyComponent } from './travel/policy/policy.component';
-import { RoleComponent } from './travel/role/role.component';
-
 
 @NgModule({
   imports: [
@@ -33,9 +29,6 @@ import { RoleComponent } from './travel/role/role.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    UserComponent,
-    PolicyComponent,
-    RoleComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -19,17 +20,22 @@ import {InterestComponent} from '../../travel/interest/interest.component';
 import {ActivityComponent} from '../../travel/activity/activity.component';
 import {MapComponent} from '../../travel/map/map.component';
 import {AttractionComponent} from '../../travel/attraction/attraction.component';
+import {UserComponent} from '../../travel/user/user.component';
+import {RoleComponent} from '../../travel/role/role.component';
+import {PermissionComponent} from '../../travel/permission/permission.component';
+import {ComponentsModule} from '../../components/components.module';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    HttpClientModule,
-    NgbModule,
-    ClipboardModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(AdminLayoutRoutes),
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+        ClipboardModule,
+        ComponentsModule
+    ],
   declarations: [
     DashboardComponent,
     UserProfileComponent,
@@ -43,6 +49,9 @@ import {AttractionComponent} from '../../travel/attraction/attraction.component'
     ActivityComponent,
     MapComponent,
     AttractionComponent,
+    UserComponent,
+    RoleComponent,
+    PermissionComponent,
   ]
 })
 
