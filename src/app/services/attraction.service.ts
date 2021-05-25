@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {AttractionModel} from '../model/attraction.model';
+import {Page} from '../model/page';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,6 @@ import {AttractionModel} from '../model/attraction.model';
 export class AttractionService {
 
   SERVICE_PATH = 'http://13.92.168.193:9003/';
-
   // SERVICE_PATH = 'http://localhost:9003/';
 
   constructor(private http: HttpClient) {
@@ -31,11 +31,25 @@ export class AttractionService {
       .pipe(map((response) => response as AttractionModel), catchError(this.handleError));
   }
 
-  handleError(err) {
-    if (err instanceof HttpErrorResponse) {
-      return throwError(err.message);
+  getPageableAttractions(pageNumber: number, pageSize: number): Observable<Page<AttractionModel>> {
+    let params = new HttpParams();
+    params = params.append('page', pageNumber.toString());
+    params = params.append('size', pageSize.toString());
+    return this.http.get<Page<AttractionModel>>(this.SERVICE_PATH + 'attractions', {params: params})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
     } else {
-      return throwError(err);
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
     }
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 }

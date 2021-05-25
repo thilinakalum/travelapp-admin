@@ -14,4 +14,5 @@ export class UserModel {
   accountNonLocked: boolean;
   roles: RoleModel;
   totalPages: number;
+  passwordChanged: boolean;
 }

@@ -1,18 +1,18 @@
 <div>
   <div *ngIf="selectedImage" class=" row justify-content-center image-preview-container">
-    <div [ngStyle]="{'backgroundImage': 'url('+ selectedImage.src+ ')' }"
+    <div [ngStyle]="{'backgroundImage': 'url('+ selectedImage.src+ ')', 'border-radius': radius }"
          class="image-preview">
     </div>
   </div>
 
   <div *ngIf="!selectedImage" class="row justify-content-center image-preview-container">
-    <div [ngStyle]="{'backgroundImage': 'url('+ '../../../assets/img/theme/empty_propic.png' +')' }"
+    <div [ngStyle]="{'backgroundImage': 'url('+ bgImage +')','border-radius': radius }"
          class="image-preview">
     </div>
   </div>
 
   <div class="row justify-content-center">
-    <label class="btn btn-default btn-sm image-upload-container">
+    <label class="btn btn-default btn-sm image-upload-container" style="margin-top: 6px;">
       <span>Select Image</span>
       <input
         #imageInput

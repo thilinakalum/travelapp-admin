@@ -3,6 +3,7 @@ import {UserModel} from '../../model/user.model';
 import {UserService} from '../../services/user.service';
 import {Page} from '../../model/page';
 import {RoleModel} from '../../model/role.model';
+import {ToastrService} from 'ngx-toastr';
 
 const pageSize: number = 10;
 
@@ -13,18 +14,28 @@ const pageSize: number = 10;
 })
 export class UserComponent implements OnInit {
 
-  isNew = true;
-  viewCreate = false;
+  isNew: boolean;
+  viewCreate: boolean;
   currentSelectedPage: number;
   totalPages: number;
   pageIndexes: Array<number> = [];
   user = new UserModel();
   users: Array<UserModel> = [];
   roles: Array<RoleModel> = [];
+  cdnURL: string;
+  isMatchPassword: boolean;
+  changePassword: boolean;
+  newPassword: string;
+  confirmPassword: string;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private toastr: ToastrService) {
     this.currentSelectedPage = 0;
     this.totalPages = 0;
+    this.viewCreate = false;
+    this.isNew = true;
+    this.cdnURL = 'https://travel-store-cdn.s3-ap-southeast-1.amazonaws.com/';
+    this.changePassword = false;
   }
 
   ngOnInit(): void {
@@ -37,8 +48,20 @@ export class UserComponent implements OnInit {
       .subscribe((result) => {
         this.users.push(result);
         this.user = new UserModel();
+        this.toastr.success('User data has been save successfully.', 'Success !');
       }, error => {
+        this.toastr.error('A problem has been occurred while submitting user data.', 'Error !');
+      });
+  }
 
+  update() {
+    this.user.passwordChanged = this.changePassword;
+    this.userService.updateUser(this.user)
+      .subscribe((result) => {
+        this.user = new UserModel();
+        this.toastr.success('User data has been update successfully.', 'Success !');
+      }, error => {
+        this.toastr.error('A problem has been occurred while update user data.', 'Error !');
       });
   }
 
@@ -57,7 +80,7 @@ export class UserComponent implements OnInit {
   }
 
   getPage(pageNumber: number) {
-    this.userService.getPagableCustomers(pageNumber, pageSize)
+    this.userService.getPageableUsers(pageNumber, pageSize)
       .subscribe((page: Page<UserModel>) => {
           this.users = page.content;
           this.totalPages = page.totalPages;
@@ -89,12 +112,6 @@ export class UserComponent implements OnInit {
     }
   }
 
-  edit(user: UserModel) {
-    this.viewCreate = true;
-    this.isNew = false;
-    this.user = user;
-  }
-
   createViewer() {
     this.viewCreate = true;
   }
@@ -102,5 +119,23 @@ export class UserComponent implements OnInit {
   cancel() {
     this.user = new UserModel();
     this.viewCreate = false;
+  }
+
+  edit(user: UserModel) {
+    this.viewCreate = true;
+    this.isNew = false;
+    this.user = user;
+  }
+
+  delete(user: UserModel) {
+  }
+
+  matchPassword() {
+    if (this.newPassword === this.confirmPassword) {
+      this.isMatchPassword = true;
+      this.user.password = this.newPassword;
+    } else {
+      this.isMatchPassword = false;
+    }
   }
 }

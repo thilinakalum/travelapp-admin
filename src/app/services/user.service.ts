@@ -13,6 +13,7 @@ import {Page} from '../model/page';
 export class UserService {
 
   SERVICE_PATH = 'http://13.92.168.193:9007/';
+  // SERVICE_PATH = 'http://localhost:9007/';
 
   constructor(private http: HttpClient) {
   }
@@ -31,7 +32,15 @@ export class UserService {
 
   saveUser(user: UserModel): Observable<UserModel> {
     return this.http
-      .post(this.SERVICE_PATH + 'user', user, {
+      .post(this.SERVICE_PATH + 'users/signup', user, {
+        headers: null,
+      })
+      .pipe(map((response) => response as UserModel), catchError(this.handleError));
+  }
+
+  updateUser(user: UserModel): Observable<UserModel> {
+    return this.http
+      .put(this.SERVICE_PATH + 'users/' + user.id, user, {
         headers: null,
       })
       .pipe(map((response) => response as UserModel), catchError(this.handleError));
@@ -53,7 +62,7 @@ export class UserService {
       .pipe(map((response) => response as PermissionModel), catchError(this.handleError));
   }
 
-  getPagableCustomers(pageNumber: number, pageSize: number): Observable<Page<UserModel>> {
+  getPageableUsers(pageNumber: number, pageSize: number): Observable<Page<UserModel>> {
     let params = new HttpParams();
     params = params.append('page', pageNumber.toString());
     params = params.append('size', pageSize.toString());

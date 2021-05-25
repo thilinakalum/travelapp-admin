@@ -12,6 +12,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppRoutingModule} from './app.routing';
 import {ComponentsModule} from './components/components.module';
+import {ToastrModule} from 'ngx-toastr';
 import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
@@ -22,6 +23,11 @@ import {BrowserModule} from '@angular/platform-browser';
     HttpClientModule,
     ComponentsModule,
     NgbModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
     RouterModule,
     AppRoutingModule
   ],

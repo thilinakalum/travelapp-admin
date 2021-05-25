@@ -22,6 +22,7 @@ import {MapComponent} from '../../travel/map/map.component';
 import {AttractionComponent} from '../../travel/attraction/attraction.component';
 import {UserComponent} from '../../travel/user/user.component';
 import {ComponentsModule} from '../../components/components.module';
+import {PasswordStrengthMeterModule} from 'angular-password-strength-meter';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -33,7 +34,8 @@ import {ComponentsModule} from '../../components/components.module';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    ComponentsModule
+    ComponentsModule,
+    PasswordStrengthMeterModule,
   ],
   declarations: [
     DashboardComponent,

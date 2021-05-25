@@ -40,6 +40,7 @@ export const USER_ROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  test: Date = new Date();
 
   public menuItems: any[];
   public locationMenuItems: any[];
