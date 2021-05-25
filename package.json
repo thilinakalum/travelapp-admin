@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "10.1.4",
     "@angular/router": "10.1.4",
     "@ng-bootstrap/ng-bootstrap": "7.0.0",
+    "angular-password-strength-meter": "^3.0.1",
     "bootstrap": "4.5.2",
     "chart.js": "2.9.3",
     "clipboard": "2.0.6",
